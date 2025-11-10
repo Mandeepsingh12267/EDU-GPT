@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - EduGPT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/signup.css">
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-header">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>EduGPT</span>
+            </div>
+            <h1>Join Smart Learning Platform</h1>
+            <p>Create your account in just a few steps</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-steps">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <span>Account</span>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <span>Education</span>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <span>Profile</span>
+                </div>
+            </div>
+        </div>
+
+        <form id="signupForm" class="signup-form">
+            <!-- Step 1: Account Details -->
+            <div class="form-step active" data-step="1">
+                <div class="form-group">
+                    <label for="role">I am a</label>
+                    <select id="role" name="role" required>
+                        <option value="">Select your role</option>
+                        <option value="student">Student</option>
+                        <option value="educator">Educator</option>
+                    </select>
+                </div>
+
+                <div class="name-group">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required minlength="2">
+                        <span class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required minlength="2">
+                        <span class="error-message"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input">
+                        <input type="password" id="password" name="password" required minlength="8">
+                        <button type="button" class="toggle-password" id="togglePassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="password-strength">
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                        <span class="strength-text" id="strengthText">Weak</span>
+                    </div>
+                    <div class="password-rules">
+                        <p>Password must contain:</p>
+                        <ul>
+                            <li id="rule-length">At least 8 characters</li>
+                            <li id="rule-uppercase">One uppercase letter</li>
+                            <li id="rule-lowercase">One lowercase letter</li>
+                            <li id="rule-number">One number</li>
+                            <li id="rule-special">One special character</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="password-input">
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        <button type="button" class="toggle-password" id="toggleConfirmPassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <span class="error-message" id="confirmPasswordError"></span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-next" id="nextStep1">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Education Details -->
+            <div class="form-step" data-step="2">
+                <div class="form-group">
+                    <label for="educationLevel">Education Level</label>
+                    <select id="educationLevel" name="educationLevel" required>
+                        <option value="">Select your education level</option>
+                        <option value="elementary">Elementary School</option>
+                        <option value="middle">Middle School</option>
+                        <option value="high">High School</option>
+                        <option value="undergraduate">Undergraduate</option>
+                        <option value="graduate">Graduate</option>
+                        <option value="postgraduate">Postgraduate</option>
+                        <option value="phd">PhD</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="institution">Institution (Optional)</label>
+                    <input type="text" id="institution" name="institution" placeholder="Your school or university">
+                </div>
+
+                <div class="form-group">
+                    <label>Current Status</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="status" value="studying" checked>
+                            <span class="radio-checkmark"></span>
+                            <div class="radio-content">
+                                <div class="radio-label">Currently Studying</div>
+                                <div class="radio-description">Actively enrolled in courses</div>
+                            </div>
+                            <div class="status-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="status" value="graduated">
+                            <span class="radio-checkmark"></span>
+                            <div class="radio-content">
+                                <div class="radio-label">Graduated</div>
+                                <div class="radio-description">Completed my education</div>
+                            </div>
+                            <div class="status-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="status" value="working">
+                            <span class="radio-checkmark"></span>
+                            <div class="radio-content">
+                                <div class="radio-label">Working Professional</div>
+                                <div class="radio-description">Learning while working</div>
+                            </div>
+                            <div class="status-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                        </label>
+                        
+                        <label class="radio-option">
+                            <input type="radio" name="status" value="self_study">
+                            <span class="radio-checkmark"></span>
+                            <div class="radio-content">
+                                <div class="radio-label">Self-Study</div>
+                                <div class="radio-description">Learning independently</div>
+                            </div>
+                            <div class="status-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-prev">Back</button>
+                    <button type="button" class="btn-next" id="nextStep2">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Profile & Interests -->
+            <div class="form-step" data-step="3">
+                <div class="form-group">
+                    <label for="interests">Academic Interests</label>
+                    <div class="interests-grid" id="interestsGrid">
+                        <!-- Interests will be populated dynamically based on education level -->
+                    </div>
+                    <div class="selected-interests" id="selectedInterests">
+                        <!-- Selected interests will appear here -->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="learningGoals">Learning Goals</label>
+                    <textarea id="learningGoals" name="learningGoals" placeholder="What do you hope to achieve with EduGPT? (e.g., Improve grades, Learn new skills, Prepare for exams)" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="about">About Me</label>
+                    <textarea id="about" name="about" placeholder="Tell us about yourself, your passions, and what motivates you to learn..." rows="4"></textarea>
+                    <div class="char-count">
+                        <span id="charCount">0</span>/500 characters
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="terms-section">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <span class="checkmark"></span>
+                            <div class="checkbox-text">
+                                <div class="terms-header">Agreement to Terms</div>
+                                I agree to the Terms of Service and Privacy Policy. I understand that my data will be processed in accordance with EduGPT's policies.
+                            </div>
+                        </label>
+                        <div class="terms-links">
+                            <a href="#" class="terms-link">📄 Read Terms of Service</a>
+                            <a href="#" class="terms-link">🔒 Review Privacy Policy</a>
+                        </div>
+                        <span class="error-message" id="termsError"></span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-prev">Back</button>
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span class="btn-text">Create Account</span>
+                        <div class="spinner hidden" id="submitSpinner"></div>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <div class="auth-divider">
+            <span>OR</span>
+        </div>
+
+        <button class="btn-google" type="button" id="googleSignIn">
+            <i class="fab fa-google"></i>
+            Continue with Google
+        </button>
+        
+        <div class="login-redirect">
+            Already have an account? <a href="index.html" class="link">Login</a>
+        </div>
+    </div>
+
+    <!-- ADD FIREBASE CONFIGURATION DIRECTLY IN THE HTML -->
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCK3N8bBpqr7xeCGK8-g0WSyLUjBV-iK-U",
+            authDomain: "edu-gpt-f7808.firebaseapp.com",
+            projectId: "edu-gpt-f7808",
+            storageBucket: "edu-gpt-f7808.firebasestorage.app",
+            messagingSenderId: "1084681482841",
+            appId: "1:1084681482841:web:085b34dd5d3344cf2ff748",
+            measurementId: "G-RJVK5KDHHF"
+        };
+
+        // Initialize Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+            console.log('🔥 Firebase initialized successfully in signup.html');
+        } else {
+            console.log('🔥 Firebase already initialized');
+        }
+
+        // Make Firebase services globally available
+        window.firebaseAuth = firebase.auth();
+        window.firebaseDb = firebase.firestore();
+    </script>
+
+    <!-- Then load the updated signup.js -->
+    <script src="js/signup.js"></script>
+</body>
+</html>

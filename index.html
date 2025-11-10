@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EduGPT</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" onclick="refreshPage()">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 20 C35 20, 25 35, 25 50 C25 35, 35 25, 50 25 C65 25, 75 35, 75 50 C75 35, 65 20, 50 20 Z"/>
+                    <path d="M50 80 C35 80, 25 65, 25 50 C25 65, 35 75, 50 75 C65 75, 75 65, 75 50 C75 65, 65 80, 50 80 Z"/>
+                    <path d="M20 50 C20 35, 35 25, 50 25 C35 25, 25 35, 25 50 C25 65, 35 75, 50 75 C35 75, 20 65, 20 50 Z"/>
+                    <path d="M80 50 C80 35, 65 25, 50 25 C65 25, 75 35, 75 50 C75 65, 65 75, 50 75 C65 75, 80 65, 80 50 Z"/>
+                    <circle cx="50" cy="50" r="8" fill="#6FE7DD"/>
+                </svg>
+                EDU GPT
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="signup.html" class="nav-btn secondary">SIGN UP</a>
+                <a href="#" class="nav-btn" onclick="showPage('student-dashboard')" id="studentNav" style="display: none;">Student Dashboard</a>
+                <a href="#" class="nav-btn" onclick="showPage('educator-dashboard')" id="educatorNav" style="display: none;">Educator Dashboard</a>
+                <a href="#" class="nav-btn" onclick="logout()" id="logoutBtn" style="display: none;">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Page -->
+    <div class="auth-page">
+        <div class="auth-container">
+            <div class="auth-header">
+                <div class="logo">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 20 C35 20, 25 35, 25 50 C25 35, 35 25, 50 25 C65 25, 75 35, 75 50 C75 35, 65 20, 50 20 Z"/>
+                        <path d="M50 80 C35 80, 25 65, 25 50 C25 65, 35 75, 50 75 C65 75, 75 65, 75 50 C75 65, 65 80, 50 80 Z"/>
+                        <path d="M20 50 C20 35, 35 25, 50 25 C35 25, 25 35, 25 50 C25 65, 35 75, 50 75 C35 75, 20 65, 20 50 Z"/>
+                        <path d="M80 50 C80 35, 65 25, 50 25 C65 25, 75 35, 75 50 C75 65, 65 75, 50 75 C65 75, 80 65, 80 50 Z"/>
+                        <circle cx="50" cy="50" r="8" fill="#6FE7DD"/>
+                    </svg>
+                    EDU GPT
+                </div>
+                <h1>Welcome to EduGPT</h1>
+                <p>Your Smart Learning Assistant</p>
+            </div>
+
+            <!-- User Type Selection -->
+            <div class="form-group">
+                <select id="role" class="form-input" required>
+                    <option value="">Select Your Role</option>
+                    <option value="student">Student</option>
+                    <option value="educator">Educator</option>
+                </select>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="auth-btn">Login</button>
+            </form>
+            
+            <div class="auth-link">
+                Don't have an account? <a href="signup.html">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD FIREBASE CONFIGURATION TO INDEX.HTML TOO -->
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCK3N8bBpqr7xeCGK8-g0WSyLUjBV-iK-U",
+            authDomain: "edu-gpt-f7808.firebaseapp.com",
+            projectId: "edu-gpt-f7808",
+            storageBucket: "edu-gpt-f7808.firebasestorage.app",
+            messagingSenderId: "1084681482841",
+            appId: "1:1084681482841:web:085b34dd5d3344cf2ff748",
+            measurementId: "G-RJVK5KDHHF"
+        };
+
+        // Initialize Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+            console.log('🔥 Firebase initialized successfully in index.html');
+        }
+
+        // Make Firebase services globally available
+        window.firebaseAuth = firebase.auth();
+        window.firebaseDb = firebase.firestore();
+    </script>
+
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

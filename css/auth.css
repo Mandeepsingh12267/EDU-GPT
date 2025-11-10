@@ -1,0 +1,245 @@
+/* Auth Pages */
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 480px;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 24px;
+    padding: 48px 40px;
+    box-shadow: 0 20px 60px rgba(11, 29, 37, 0.3);
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #1CAFAA;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.logo svg {
+    width: 36px;
+    height: 36px;
+    fill: #1CAFAA;
+}
+
+.auth-header h1 {
+    color: #0B1D25;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.auth-header p {
+    color: #6b7280;
+    font-size: 16px;
+}
+
+/* User Type Selector */
+.user-type-selector {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.user-type-btn {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e5e7eb;
+    background: white;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.user-type-btn.active {
+    border-color: #1CAFAA;
+    background: rgba(28, 175, 170, 0.1);
+    color: #1CAFAA;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    color: #0B1D25;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: #1CAFAA;
+    box-shadow: 0 0 0 4px rgba(28, 175, 170, 0.1);
+}
+
+.form-input.error {
+    border-color: #f15a59;
+}
+
+.form-input.success {
+    border-color: #1CAFAA;
+}
+
+.error-message {
+    color: #f15a59;
+    font-size: 14px;
+    margin-top: 6px;
+    display: none;
+}
+
+.auth-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #1CAFAA 0%, #6FE7DD 100%);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(28, 175, 170, 0.4);
+}
+
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 24px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.divider span {
+    padding: 0 16px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* Google Button */
+.google-btn {
+    width: 100%;
+    background: white;
+    color: #0B1D25;
+    border: 2px solid #e5e7eb;
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.google-btn:hover {
+    border-color: #1CAFAA;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.google-logo {
+    width: 20px;
+    height: 20px;
+}
+
+/* Auth Link */
+.auth-link {
+    text-align: center;
+    margin-top: 24px;
+    color: #6b7280;
+}
+
+.auth-link a {
+    color: #1CAFAA;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* Success Banner */
+.success-banner {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(28, 175, 170, 0.1);
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+
+.success-banner h4 {
+    color: #0B1D25;
+    margin-bottom: 12px;
+}
+
+.success-banner p {
+    color: #6b7280;
+    margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 32px 24px;
+    }
+
+    .auth-header h1 {
+        font-size: 24px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .user-type-selector {
+        flex-direction: column;
+    }
+    
+    .user-type-btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0B1D25 0%, #1a3a45 100%);
+    min-height: 100vh;
+    padding: 100px 20px 20px;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(11, 29, 37, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 16px 24px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(28, 175, 170, 0.2);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #6FE7DD;
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.nav-logo svg {
+    width: 32px;
+    height: 32px;
+    fill: #1CAFAA;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.nav-btn {
+    background: linear-gradient(135deg, #1CAFAA 0%, #6FE7DD 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(28, 175, 170, 0.4);
+}
+
+.nav-btn.secondary {
+    background: transparent;
+    border: 2px solid #1CAFAA;
+    color: #1CAFAA;
+}
+
+.nav-btn.secondary:hover {
+    background: #1CAFAA;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 16px;
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .nav-menu {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    .nav-logo {
+        font-size: 20px;
+    }
+    
+    .nav-logo svg {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-menu {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .nav-btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .navbar {
+        padding: 12px 16px;
+    }
+}

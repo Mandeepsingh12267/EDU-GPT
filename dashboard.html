@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduGPT - Dashboard</title>
+    <link rel="stylesheet" href="css/page.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Additional styles for enhanced functionality */
+        .typing-indicator .message-content {
+            background: transparent;
+            border: none;
+            padding: 8px 16px;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+            padding: 8px 0;
+        }
+
+        .typing-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #6c757d;
+            animation: typingBounce 1.4s ease-in-out infinite both;
+        }
+
+        .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes typingBounce {
+            0%, 80%, 100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .progress-card, .achievement-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .progress-card:hover, .achievement-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .quick-btn {
+            transition: all 0.3s ease;
+        }
+
+        .quick-btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message {
+            animation: fadeInUp 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>EDU GPT</span>
+            </div>
+            <div class="nav-menu">
+                <button class="nav-btn" data-target="student-dashboard">Student Dashboard</button>
+                <button class="nav-btn" data-target="ai-tutor">AI Tutor</button>
+                <button class="nav-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- AI Tutor Page -->
+    <section id="ai-tutor" class="page active">
+        <div class="tutor-container">
+            <!-- Sidebar -->
+            <aside class="tutor-sidebar">
+                <div class="sidebar-header">
+                    <div class="tutor-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="tutor-info">
+                        <h3>Alex AI Tutor</h3>
+                        <span class="status online">Online & Ready</span>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active" data-action="new-chat">
+                        <i class="fas fa-comment"></i>
+                        <span>New Chat</span>
+                    </a>
+                    <a href="#" class="nav-item" data-action="chat-history">
+                        <i class="fas fa-history"></i>
+                        <span>Chat History</span>
+                    </a>
+                    <a href="#" class="nav-item" data-action="saved-notes">
+                        <i class="fas fa-save"></i>
+                        <span>Saved Notes</span>
+                    </a>
+                    <a href="#" class="nav-item" data-action="performance-insights">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Performance Insights</span>
+                    </a>
+                    <a href="#" class="nav-item" data-action="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <button class="footer-btn" id="clearConversations">
+                        <i class="fas fa-trash"></i>
+                        Clear Conversations
+                    </button>
+                    <div class="theme-toggle">
+                        <span>Dark Mode</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="themeToggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Chat Area -->
+            <main class="chat-main">
+                <div class="chat-header">
+                    <h2>AI Tutor – Ask Anything!</h2>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages will be populated dynamically -->
+                    <div class="message ai-message">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>Hello! I'm Alex, your AI tutor. I'm here to help you with any questions about your courses, homework, or learning concepts. What would you like to know today?</p>
+                            <span class="message-time">10:00 AM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="quick-btn" data-action="summarize">
+                        <i class="fas fa-file-contract"></i>
+                        Summarize
+                    </button>
+                    <button class="quick-btn" data-action="explain">
+                        <i class="fas fa-lightbulb"></i>
+                        Explain
+                    </button>
+                    <button class="quick-btn" data-action="quiz">
+                        <i class="fas fa-question-circle"></i>
+                        Quiz Me
+                    </button>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="chat-input">
+                        <input type="text" placeholder="Type your message here..." id="messageInput">
+                        <button class="send-btn" id="sendMessage">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Student Dashboard Page -->
+    <section id="student-dashboard" class="page">
+        <div class="dashboard-container">
+            <!-- Welcome Card -->
+            <div class="welcome-card">
+                <div class="welcome-content">
+                    <h1>Welcome Back, <span class="user-name" id="userName">Alex!</span></h1>
+                    <p>Ready to continue your learning journey? You're making great progress!</p>
+                    <button class="cta-btn" id="continueLearning">
+                        <i class="fas fa-play"></i>
+                        Continue Learning
+                    </button>
+                </div>
+                <div class="welcome-graphic">
+                    <i class="fas fa-rocket"></i>
+                </div>
+            </div>
+
+            <!-- Progress Cards -->
+            <div class="progress-grid">
+                <div class="progress-card" data-type="progress">
+                    <div class="card-icon learning">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Learning Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 75%"></div>
+                    </div>
+                    <span class="progress-text" id="progressText">75% Complete</span>
+                </div>
+
+                <div class="progress-card" data-type="course">
+                    <div class="card-icon course">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Current Course</h3>
+                    <p id="currentCourse">Advanced Mathematics</p>
+                    <span class="progress-text" id="currentChapter">Chapter 5: Calculus</span>
+                </div>
+
+                <div class="progress-card" data-type="streak">
+                    <div class="card-icon streak">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Study Streak</h3>
+                    <div class="streak-count" id="streakCount">12 days</div>
+                    <span class="progress-text">Keep going!</span>
+                </div>
+            </div>
+
+            <!-- Recent Achievements -->
+            <div class="achievements-section">
+                <h2>Recent Achievements</h2>
+                <div class="achievements-grid" id="achievementsGrid">
+                    <!-- Achievements will be populated dynamically -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon gold">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h4>Math Master</h4>
+                        <p>Completed Algebra course with 95% score</p>
+                        <span class="achievement-date">2 days ago</span>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon silver">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>Quick Learner</h4>
+                        <p>Finished 5 chapters in one week</p>
+                        <span class="achievement-date">1 week ago</span>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon bronze">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>Study Streak</h4>
+                        <p>7+ days of consistent learning</p>
+                        <span class="achievement-date">2 weeks ago</span>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon blue">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4>Problem Solver</h4>
+                        <p>Solved 100+ practice problems</p>
+                        <span class="achievement-date">3 weeks ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Load JavaScript files -->
+    <script src="js/page.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+        // Global initialization that works with all three files
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Dashboard HTML loaded');
+            
+            // Check authentication
+            const token = localStorage.getItem('edugpt_token');
+            const user = localStorage.getItem('edugpt_user');
+            
+            if (!token || !user) {
+                console.log('No user found, redirecting to login');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Initialize page manager (from page.js)
+            window.pageManager = new PageManager();
+            
+            // Check which page is active and initialize accordingly
+            const activePage = document.querySelector('.page.active');
+            if (activePage) {
+                if (activePage.id === 'student-dashboard') {
+                    // Initialize dashboard if it's the active page
+                    if (typeof initializeStudentDashboard === 'function') {
+                        initializeStudentDashboard();
+                    }
+                } else if (activePage.id === 'ai-tutor') {
+                    // Initialize AI Tutor if it's the active page
+                    if (typeof initializeAITutor === 'function') {
+                        initializeAITutor();
+                    }
+                }
+            }
+
+            // Set up a mutation observer to detect page changes
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        const target = mutation.target;
+                        if (target.classList.contains('page')) {
+                            if (target.classList.contains('active') && target.id === 'student-dashboard') {
+                                // Dashboard became active
+                                if (typeof initializeStudentDashboard === 'function' && !window.dashboard) {
+                                    initializeStudentDashboard();
+                                }
+                            } else if (target.classList.contains('active') && target.id === 'ai-tutor') {
+                                // AI Tutor became active
+                                if (typeof initializeAITutor === 'function' && !window.aiTutor) {
+                                    initializeAITutor();
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+
+            // Observe all page elements for class changes
+            document.querySelectorAll('.page').forEach(page => {
+                observer.observe(page, { attributes: true });
+            });
+        });
+
+        // Global error handler
+        window.addEventListener('error', function(e) {
+            console.error('Global error:', e.error);
+        });
+    </script>
+</body>
+</html>

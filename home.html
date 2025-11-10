@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduGPT - Smart Learning Platform</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="logo">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231CAFAA'%3E%3Cpath d='M12 2L1 21h22L12 2zm0 4l8.5 14h-17L12 6z'/%3E%3C/svg%3E" alt="EduGPT Logo">
+                <span>EduGPT</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="index.html" class="nav-link">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Empower Your Learning with EduGPT 🚀</h1>
+                <p class="hero-subtitle">An AI-driven learning platform that adapts to your pace, style, and goals.</p>
+                <div class="hero-buttons">
+                    <a href="signup.html" class="btn btn-primary btn-large">Get Started</a>
+                    <a href="#features" class="btn btn-secondary btn-large">Explore Features</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="gradient-orb"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Slider Section -->
+    <section id="features" class="features-slider">
+        <div class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slider-track">
+                    <!-- Slide 1 -->
+                    <div class="slide active">
+                        <div class="slide-content">
+                            <div class="slide-icon">🎯</div>
+                            <h2>Personalized Learning Paths</h2>
+                            <p>Customized curriculum that adapts to your learning style and progress</p>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <div class="slide-content">
+                            <div class="slide-icon">🤖</div>
+                            <h2>Chat with AI Tutors</h2>
+                            <p>24/7 access to intelligent AI tutors for instant help and guidance</p>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <div class="slide-content">
+                            <div class="slide-icon">📊</div>
+                            <h2>Track Your Progress</h2>
+                            <p>Comprehensive analytics to monitor your learning journey and achievements</p>
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="slide">
+                        <div class="slide-content">
+                            <div class="slide-icon">🎨</div>
+                            <h2>Multimedia Learning</h2>
+                            <p>Engage with interactive content, videos, and immersive learning experiences</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slider Controls -->
+            <div class="slider-controls">
+                <button class="slider-arrow prev-arrow">‹</button>
+                <div class="slider-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                </div>
+                <button class="slider-arrow next-arrow">›</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose EduGPT?</h2>
+            <p class="section-subtitle">Revolutionizing education through artificial intelligence and personalized learning experiences</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Adaptive Learning</h3>
+                    <p>Our AI continuously adapts to your learning pace and style for optimal knowledge retention</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Real-time Chat</h3>
+                    <p>Instant AI-powered assistance whenever you need help with your studies</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Track your progress with detailed insights and performance metrics</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Gamified Learning</h3>
+                    <p>Earn badges, level up, and compete with peers in an engaging learning environment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <p class="section-subtitle">Choose the plan that works best for your learning journey</p>
+            
+            <div class="pricing-grid">
+                <!-- Free Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Free</h3>
+                        <div class="price">
+                            <span class="amount">$0</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <ul class="features-list">
+                        <li>✓ Basic AI Chat Access</li>
+                        <li>✓ Limited Learning Paths</li>
+                        <li>✓ Community Support</li>
+                        <li>✓ Basic Progress Tracking</li>
+                        <li>✗ Advanced Analytics</li>
+                        <li>✗ Personalized Tutoring</li>
+                    </ul>
+                    <a href="signup.html" class="btn btn-secondary btn-full">Get Started Free</a>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="pricing-card featured">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <div class="pricing-header">
+                        <h3>Pro</h3>
+                        <div class="price">
+                            <span class="amount">$19</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <ul class="features-list">
+                        <li>✓ Unlimited AI Chat Access</li>
+                        <li>✓ All Learning Paths</li>
+                        <li>✓ Priority Support</li>
+                        <li>✓ Advanced Progress Tracking</li>
+                        <li>✓ Detailed Analytics</li>
+                        <li>✓ Personalized Tutoring</li>
+                    </ul>
+                    <a href="signup.html" class="btn btn-primary btn-full">Start Pro Trial</a>
+                </div>
+
+                <!-- Institution Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Institution</h3>
+                        <div class="price">
+                            <span class="amount">$49</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <ul class="features-list">
+                        <li>✓ Everything in Pro</li>
+                        <li>✓ Multi-user Management</li>
+                        <li>✓ Custom Learning Paths</li>
+                        <li>✓ API Access</li>
+                        <li>✓ Dedicated Support</li>
+                        <li>✓ White-label Options</li>
+                    </ul>
+                    <a href="signup.html" class="btn btn-secondary btn-full">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Have questions? We'd love to hear from you</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>support@edugpt.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💬</div>
+                        <div>
+                            <h3>Live Chat</h3>
+                            <p>Available 24/7 for Pro users</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+1 (555) 123-EDU</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>EduGPT</span>
+                    <p>Smart Learning Platform</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">💼</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EduGPT | All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/home.js"></script>
+</body>
+</html>
